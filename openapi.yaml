@@ -1,4 +1,102 @@
-SKILL.md
-references/
-templates/
-openapi.yaml
+openapi: 3.1.0
+info:
+  title: KOLHUB GitHub Skill Reader
+  version: 1.0.0
+  description: Read KOLHUB proposal skill files from GitHub.
+
+servers:
+  - url: https://api.github.com
+
+paths:
+  /repos/meet-kolhub/kolhub-proposal-tool-/contents/SKILL.md:
+    get:
+      operationId: getKolhubSkill
+      summary: Read the main KOLHUB proposal skill
+      parameters:
+        - name: ref
+          in: query
+          required: false
+          schema:
+            type: string
+            default: main
+        - name: Accept
+          in: header
+          required: false
+          schema:
+            type: string
+            default: application/vnd.github.raw+json
+        - name: X-GitHub-Api-Version
+          in: header
+          required: false
+          schema:
+            type: string
+            default: "2022-11-28"
+      responses:
+        "200":
+          description: Main KOLHUB skill file content.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /repos/meet-kolhub/kolhub-proposal-tool-/contents/references/guidelines.md:
+    get:
+      operationId: getKolhubGuidelines
+      summary: Read KOLHUB proposal guidelines
+      parameters:
+        - name: ref
+          in: query
+          required: false
+          schema:
+            type: string
+            default: main
+        - name: Accept
+          in: header
+          required: false
+          schema:
+            type: string
+            default: application/vnd.github.raw+json
+        - name: X-GitHub-Api-Version
+          in: header
+          required: false
+          schema:
+            type: string
+            default: "2022-11-28"
+      responses:
+        "200":
+          description: KOLHUB proposal guidelines content.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /repos/meet-kolhub/kolhub-proposal-tool-/contents/templates/proposal-output.md:
+    get:
+      operationId: getKolhubProposalTemplate
+      summary: Read KOLHUB proposal output template
+      parameters:
+        - name: ref
+          in: query
+          required: false
+          schema:
+            type: string
+            default: main
+        - name: Accept
+          in: header
+          required: false
+          schema:
+            type: string
+            default: application/vnd.github.raw+json
+        - name: X-GitHub-Api-Version
+          in: header
+          required: false
+          schema:
+            type: string
+            default: "2022-11-28"
+      responses:
+        "200":
+          description: KOLHUB proposal output template content.
+          content:
+            text/plain:
+              schema:
+                type: string
